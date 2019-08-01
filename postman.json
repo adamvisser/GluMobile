@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "8fcf668a-c675-4349-b537-1e8e16ba3f39",
+		"name": "Glu Test",
+		"description": "This is the accompanying set of API tests for the test that I took to apply for Glu Mobile",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Job",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"task"
+					]
+				},
+				"description": "This will get a job from the API that is ready to be worked on. The requester will be the one who is processing this now."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Job Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/task/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"task",
+						"2"
+					]
+				},
+				"description": "This will not get a job for processing, but for gathering info on it."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Job - no priority",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "submitter_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "command",
+							"value": "docker ps",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"task"
+					]
+				},
+				"description": "This is the test for adding a job to the queue with a no priority."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Job - low priority",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "submitter_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "command",
+							"value": "docker ps",
+							"type": "text"
+						},
+						{
+							"key": "priority",
+							"value": "10\n",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"task"
+					]
+				},
+				"description": "This is the test for adding a job to the queue with a low priority."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Job - High priority",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "submitter_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "command",
+							"value": "docker ps",
+							"type": "text"
+						},
+						{
+							"key": "priority",
+							"value": "70\n",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"task"
+					]
+				},
+				"description": "This is the test for adding a job to the queue with a high priority."
+			},
+			"response": []
+		},
+		{
+			"name": "List Jobs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/task/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"task",
+						"list"
+					]
+				},
+				"description": "This lists all of the jobs that we have on hand in the database"
+			},
+			"response": []
+		},
+		{
+			"name": "API Version Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "This is the default route from Lumen to provide info about the app version. "
+			},
+			"response": []
+		}
+	]
+}
